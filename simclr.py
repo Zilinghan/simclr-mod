@@ -106,7 +106,7 @@ class SimCLR(object):
         logging.info(f"Training with gpu: {self.args.disable_cuda}.")
         
         for epoch_counter in range(self.args.epochs):
-            for contra_images, _, super_images, super_labels in tqdm(zip(contrastive_train_loader, super_train_loader)):
+            for (contra_images, _), (super_images, super_labels) in tqdm(zip(contrastive_train_loader, super_train_loader)):
                 contra_images = torch.cat(contra_images, dim=0)
                 super_images = torch.cat(super_images, dim=0)
 
